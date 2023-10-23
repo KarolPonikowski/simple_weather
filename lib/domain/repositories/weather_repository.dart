@@ -13,12 +13,10 @@ class WeatherRepository {
       city: city,
     );
 
-    if (responseData == null) {
+    if (json == null) {
       return null;
     }
 
-    final name = responseData['location']['name'] as String;
-    final temperature = (responseData['current']['temp_c'] + 0.0) as double;
-    return WeatherModel(city: name, temperature: temperature);
+    return WeatherModel.fromJson(json);
   }
 }
